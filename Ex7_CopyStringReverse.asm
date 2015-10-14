@@ -16,7 +16,13 @@ main PROC
 ; Point EDI to the beginning of the target string:
 ; We do not copy the null terminator byte.
 
-; Your code goes here	
+	mov	esi,SIZEOF source	;index register
+	mov	ecx,SIZEOF source	;loop counter
+L1:
+	mov	a1,source[esi]		;get a character from source
+	mov	target[esi],a1		;store it in the target
+	dec	esi				;goes backwards to next character
+	loop	L1				;repeat loop for entire string
 
 	mov	BYTE PTR [edi],0			; add a null byte to the target
 
